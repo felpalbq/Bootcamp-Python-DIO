@@ -69,9 +69,9 @@ O **curso** segue um cronograma bem estruturado, com módulos semanais que abord
 
 ## 🔗 Conecte-se Comigo
 
-- **GitHub**: [github.com/felpalbq](https://github.com/felpalbq)
-- **LinkedIn**: [linkedin.com/in/felipealbuquerque](https://www.linkedin.com/in/felpsszalbq)
-- **WhatsApp**: [+55 73 974009156](https://wa.me/5573974009156)
+[![GitHub](https://img.shields.io/badge/-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/felpalbq)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/felpsszalbq)
+[![WhatsApp](https://img.shields.io/badge/-WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5573974009156)
 
 ---
 
