@@ -1,5 +1,3 @@
-# 🚀 Bootcamp Santander 2025 - Back End Python
-
 # 🚀 Branch: Criação – Sistema Bancário
 
 Esta branch contém a **primeira versão do sistema bancário**, focando na **criação** de funcionalidades essenciais: **saldo**, **depósitos**, **saques** e **extrato**. O sistema foi desenvolvido utilizando conceitos de **Python** como manipulação de **strings**, **operadores**, **condicionais** e **laços de repetição**.
