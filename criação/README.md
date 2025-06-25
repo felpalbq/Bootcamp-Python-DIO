@@ -80,7 +80,7 @@ A próxima fase do projeto envolverá o **aprimoramento** do sistema com as segu
 ## 🔗 Conecte-se Comigo
 
 - **GitHub**: [github.com/felpalbq](https://github.com/felpalbq)
-- **LinkedIn**: [linkedin.com/in/felipealbuquerque](https://www.linkedin.com/in/felipealbuquerque)
+- **LinkedIn**: [linkedin.com/in/felipealbuquerque](https://www.linkedin.com/in/felpsszalbq)
 - **WhatsApp**: [+55 73 974009156](https://wa.me/5573974009156)
 
 ---
