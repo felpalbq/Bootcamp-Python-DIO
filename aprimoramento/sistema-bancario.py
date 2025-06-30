@@ -1,5 +1,9 @@
 #### SISTEMA BANCÁRIO APRIMORADO ####
 
+## Declaração das variáveis ##
+
+usuarios = {} # Conjunto de usuários
+contador_contas = 1
 saldo = 1000
 extrato = []
 limite_saque = 3
@@ -7,46 +11,8 @@ limite_valor = 500
 numero_saques = 0
 
 
-### FUNÇÃO DEPÓSITO ###
-def deposito (saldo, valor, extrato):
-    saldo += valor
-    extrato.append(f"Depósito de R$:{valor:.2f}/n")
-    return saldo, extrato
-
-# saldo, extrato = deposito(saldo, float(input("Informe o valor que deseja depositar: ")), extrato)
-
-### FUNÇÃO SAQUE ###
-def saque (saldo, valor, extrato, numero_saques, limite_saque, limite_valor):
-    if numero_saques > limite_saque:
-        print("Limite de saques diários excedido")
-    elif limite_valor > 500:
-        print("Valor limite de saque excedido")
-    elif valor > saldo:
-        print("Saldo insuficiente")
-    else:
-        saldo -= valor
-        extrato.append(f"Saque de R$:{valor:.2f}/n")
-        numero_saques += 1
-        return saldo, extrato, numero_saques
-    return saldo, extrato, numero_saques
-    
-
-# saldo, extrato, numero_saques = saque(saldo, float(input("Informe o valor que deseja sacar: ")), extrato, numero_saques, limite_saque, limite_valor)
-
-### FUNÇÃO EXTRATO ###
-def extrato (extrato):
-    if not extrato:
-        print("Nenhuma operação realizada")
-    else: 
-        for operacao in extrato:
-            print(operacao)
-
-
 #=========================== E T A P A === C A D A S T R O =========================#
 
-usuarios = {}
-contas = {}
-contador_contas = 1
 
 ### FUNÇÃO CRIAR USUÁRIO ###
 def criar_usuario(nome, cpf, data_nascimento, endereco):
@@ -57,6 +23,22 @@ def criar_usuario(nome, cpf, data_nascimento, endereco):
         "endereço": endereco,
         "contas": []
         }
+
+### FUNÇÃO CRIAR CONTA ###
+def criar_conta(cpf, usuarios, numero_conta, agencia="001"):
+    if cpf not in usuarios:
+        print("❌ CPF não encontrado")
+        return None
+    
+    nova_conta = {
+        "agencia": agencia,
+        "numero_conta": numero_conta,
+        "cpf": cpf
+    }
+    # Cria conta
+    usuarios[cpf]["contas"].append(nova_conta)
+    numero_conta += 1
+    return nova_conta
 
 ### FUNÇÃO CADASTRO ###
 def cadastro(usuarios):
@@ -99,23 +81,90 @@ def cadastro(usuarios):
     # Criação do usuário
     novo_usuario = criar_usuario(nome, cpf, data_nascimento, endereco)
     usuarios[cpf] = novo_usuario
+
     return novo_usuario
 
-### FUNÇÃO CRIAR CONTA ###
 
-def criar_conta(usuarios, agencia="001"):
-    global contador_contas
-    numero_conta += contador_contas
-    return {"Agência": agencia, "Número_Conta": numero_conta}
+#=========================== E T A P A === O P E R A Ç Õ E S =========================#
+
+
+### FUNÇÃO DEPÓSITO ###
+def deposito (saldo, valor, extrato):
+    saldo += valor
+    extrato.append(f"Depósito de R$:{valor:.2f}/n")
+    return saldo, extrato
+
+
+
+### FUNÇÃO SAQUE ###
+def saque (saldo, valor, extrato, numero_saques, limite_saque, limite_valor):
+    if numero_saques > limite_saque:
+        print("Limite de saques diários excedido")
+    elif limite_valor > 500:
+        print("Valor limite de saque excedido")
+    elif valor > saldo:
+        print("Saldo insuficiente")
+    else:
+        saldo -= valor
+        extrato.append(f"Saque de R$:{valor:.2f}/n")
+        numero_saques += 1
+        return saldo, extrato, numero_saques
+    return saldo, extrato, numero_saques
+    
+
+
+### FUNÇÃO EXTRATO ###
+def extrato (extrato):
+    if not extrato:
+        print("Nenhuma operação realizada")
+    else: 
+        for operacao in extrato:
+            print(operacao)
+
+
+
+#=========================== E T A P A === E X E C U Ç Ã O =========================#
+
+
+def menu_principal():
+    while True:
+        print("""
+=== Bem-vindo ao Sistema Bancário ===
+
+1 - Já tenho conta
+2 - Criar conta
+3 - Sair
+""")
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1":
+            print("⚠️ Ainda não implementado: autenticação de usuário.") # Acessaria o usuário por CPF            
+        elif opcao == "2":
+            usuario = cadastro(usuarios)
+            conta = usuarios[conta]-1 # Acessa última conta
+            print("\n✅ Nova conta criada com sucesso!")
+            print(f"""
+            Nome:    {usuario['nome']}
+            Conta:   {conta['numero_conta']}
+            Agência: {conta['contas']['agência']}
+            """)
+            # etc
+        elif opcao == "3":
+            print("Encerrando o sistema...")
+            break
+        else:
+            print("❌ Opção inválida, tente novamente.\n")
+
+
 
 usuario = cadastro(usuarios)
-print(f"""
-✅ Novo usuário cadastrado com sucesso!
+# print(f"""
+# ✅ Novo usuário cadastrado com sucesso!
 
---- Dados do usuário ---
-Nome       : {usuario['nome']}
-CPF        : {usuario['cpf']}
-Nascimento : {usuario['data_nascimento']}
-Endereço   : {usuario['endereço']}
-Contas     : {usuario['contas']}
-""")
+# --- Dados do usuário ---
+# Nome       : {usuario['nome']}
+# CPF        : {usuario['cpf']}
+# Nascimento : {usuario['data_nascimento']}
+# Endereço   : {usuario['endereço']}
+# Contas     : {usuario['contas']}
+# """)
