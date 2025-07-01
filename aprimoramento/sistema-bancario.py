@@ -37,7 +37,6 @@ def criar_conta(cpf, usuarios, numero_conta, agencia="001"):
     }
     # Cria conta
     usuarios[cpf]["contas"].append(nova_conta)
-    numero_conta += 1
     return nova_conta
 
 ### FUNÇÃO CADASTRO ###
@@ -98,9 +97,9 @@ def deposito (saldo, valor, extrato):
 
 ### FUNÇÃO SAQUE ###
 def saque (saldo, valor, extrato, numero_saques, limite_saque, limite_valor):
-    if numero_saques > limite_saque:
+    if numero_saques >= limite_saque:
         print("Limite de saques diários excedido")
-    elif limite_valor > 500:
+    elif valor >= limite_valor:
         print("Valor limite de saque excedido")
     elif valor > saldo:
         print("Saldo insuficiente")
@@ -140,13 +139,17 @@ def menu_principal():
         if opcao == "1":
             print("⚠️ Ainda não implementado: autenticação de usuário.") # Acessaria o usuário por CPF            
         elif opcao == "2":
-            usuario = cadastro(usuarios)
-            conta = usuarios[conta]-1 # Acessa última conta
+            usuario_atual = cadastro(usuarios)
+            cpf = usuario_atual["cpf"]            
+            global contador_contas
+            numero_conta = contador_contas
+            conta = criar_conta(cpf, usuarios, numero_conta, agencia="001")
+            contador_contas += 1
             print("\n✅ Nova conta criada com sucesso!")
             print(f"""
-            Nome:    {usuario['nome']}
+            Nome:    {usuario_atual['nome']}
             Conta:   {conta['numero_conta']}
-            Agência: {conta['contas']['agência']}
+            Agência: {conta['agencia']}
             """)
             # etc
         elif opcao == "3":
@@ -155,16 +158,15 @@ def menu_principal():
         else:
             print("❌ Opção inválida, tente novamente.\n")
 
+        print(f"""
+✅ Novo usuário cadastrado com sucesso!
 
+--- Dados do usuário ---
+Nome       : {usuario_atual['nome']}
+CPF        : {usuario_atual['cpf']}
+Nascimento : {usuario_atual['data_nascimento']}
+Endereço   : {usuario_atual['endereço']}
+Contas     : {usuario_atual['contas']}
+""")
 
-usuario = cadastro(usuarios)
-# print(f"""
-# ✅ Novo usuário cadastrado com sucesso!
-
-# --- Dados do usuário ---
-# Nome       : {usuario['nome']}
-# CPF        : {usuario['cpf']}
-# Nascimento : {usuario['data_nascimento']}
-# Endereço   : {usuario['endereço']}
-# Contas     : {usuario['contas']}
-# """)
+menu_principal()
