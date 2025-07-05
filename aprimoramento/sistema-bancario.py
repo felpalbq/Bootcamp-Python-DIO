@@ -5,7 +5,7 @@
 usuarios = {} # Conjunto de usuários
 contador_contas = 1
 saldo = 1000
-extrato = []
+extrato_lista = []
 limite_saque = 3
 limite_valor = 500
 numero_saques = 0
@@ -99,43 +99,46 @@ def atribuir_conta (cpf, usuarios, saldo_inicial=1000, limite_valor=500, limite_
         "saldo": saldo_inicial,
         "limite_valor": limite_valor,
         "limite_saque": limite_saque,
-        "extrato": []
+        "extrato_lista": []
     }
     return conta_atribuida
 
 ### FUNÇÃO DEPÓSITO ###
-def deposito (saldo, valor, extrato):
+def deposito (saldo, valor, extrato_lista):
     saldo += valor
-    extrato.append(f"Depósito de R$:{valor:.2f}/n")
-    return saldo, extrato
+    extrato_lista.append(f"Depósito de R$:{valor:.2f}")
+    print(f"✅ Depósito de R$:{valor:.2f} realizado com sucesso!")
+    return saldo, extrato_lista
 
 
 
 ### FUNÇÃO SAQUE ###
-def saque (saldo, valor, extrato, numero_saques, limite_saque, limite_valor):
+def saque (saldo, valor, extrato_lista, numero_saques, limite_saque, limite_valor):
     if numero_saques >= limite_saque:
-        print("Limite de saques diários excedido")
-    elif valor >= limite_valor:
-        print("Valor limite de saque excedido")
+        print("\n⚠️ Limite de saques diários excedido")
+    elif valor > limite_valor:
+        print("\n⚠️ Valor limite de saque excedido")
     elif valor > saldo:
-        print("Saldo insuficiente")
+        print("\n⚠️ Saldo insuficiente")
     else:
         saldo -= valor
-        extrato.append(f"Saque de R$:{valor:.2f}/n")
+        extrato_lista.append(f"Saque de R$:{valor:.2f}")
         numero_saques += 1
-        return saldo, extrato, numero_saques
-    return saldo, extrato, numero_saques
+        print(f"✅ Saque de R$:{valor:.2f} realizado com sucesso!")
+        return saldo, extrato_lista, numero_saques
+    return saldo, extrato_lista, numero_saques
     
 
 
 ### FUNÇÃO EXTRATO ###
-def extrato (extrato):
-    if not extrato:
+def extrato (extrato_lista):
+    if not extrato_lista:
         print("Nenhuma operação realizada")
     else: 
-        for operacao in extrato:
-            print(operacao)
-
+        print("\n ======== Extrato ========")
+        for operacao in extrato_lista:
+            print(f"\n- {operacao}")
+        print("\n =========================")
 
 
 #=========================== E T A P A === E X E C U Ç Ã O =========================#
@@ -153,7 +156,7 @@ def menu_principal():
         opcao = input("Escolha uma opção: ")
 
         if opcao == "1":
-            print("⚠️ Ainda não implementado: autenticação de usuário.") # Acessaria o usuário por CPF            
+            print("\n⚠️ Ainda não implementado: autenticação de usuário.") # Acessaria o usuário por CPF            
         elif opcao == "2":
             usuario_atual = cadastro(usuarios)
             cpf = usuario_atual["cpf"]            
@@ -162,7 +165,7 @@ def menu_principal():
             conta = criar_conta(cpf, usuarios, numero_conta, agencia="001")
             contador_contas += 1
             conta_atribuida = atribuir_conta(cpf, usuarios)
-            print("\n✅ Nova conta criada com sucesso!")
+            print("✅ Nova conta criada com sucesso!")
             print(f"""
             Nome:    {usuario_atual['nome']}
             Conta:   {conta['numero_conta']}
@@ -182,13 +185,6 @@ def menu_principal():
             ======= Info Conta ==============
             Saldo      : {conta_atribuida['saldo']}
             =================================
-
-            ======= Menu de Opções ==========
-            [1] Saldo
-            [2] Depósito
-            [3] Saque
-            [4] Extrato
-            [5] Sair
             """)
             break
             # etc
@@ -199,21 +195,35 @@ def menu_principal():
             print("❌ Opção inválida, tente novamente.\n")
 
         
-def operacoes(saldo, limite_valor=500, limite_saque=3):
-    opcao_escolhida = input("Digite o número correspondente à opção desejada: ").strip()
-    if opcao_escolhida == 1: 
-        valor = input("Informe o valor que deseja sacar: ").strip()
-        while True:
-            if valor >= saldo:            
-                operacao_saque = saque(saldo, valor, extrato)
-                print(f"""
-                      Saque de R$:{valor:.2f} efetuado com sucesso!
-                      Saldo restante: R$:{saldo:.2f}
-                      """)
+def operacoes(saldo, extrato_lista, limite_valor=500, limite_saque=3, numero_saques=0):
+    while True:
+        print("""
+            ======= Menu de Opções ==========
+            [1] Saldo
+            [2] Depósito
+            [3] Saque
+            [4] Extrato
+            [5] Sair
+            """)
+        opcao_escolhida = input("Digite o número correspondente à opção desejada: ").strip()
+        if opcao_escolhida == "1":
+            print(f"O saldo atual é R$: {saldo:.2f}")
 
-                break
-            else:
-                print("Saldo insuficiente!")
-        return None
+        elif opcao_escolhida == "2":
+            valor_deposito = float(input("Digite o valor que deseja depositar: ").strip())
+            saldo, extrato_lista = deposito(saldo, valor_deposito, extrato_lista)
+
+        elif opcao_escolhida == "3":
+            valor_saque = float(input("Informe o valor que deseja sacar: ").strip())
+            saldo, extrato_lista, numero_saques = saque(saldo, valor_saque, extrato_lista, numero_saques, limite_saque, limite_valor)                
+
+        elif opcao_escolhida == "4":
+            extrato(extrato_lista)
+
+        elif opcao_escolhida == "5":
+            print("\n======== Operação Encerrada ========")
+            break
+        else:
+            print("❌ Opção inválida!")        
 menu_principal()
-operacoes(saldo)
+operacoes(saldo, extrato_lista)
