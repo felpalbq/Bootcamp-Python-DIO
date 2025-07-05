@@ -22,34 +22,34 @@ Nesta versão aprimorada, o sistema passou a oferecer:
 As funcionalidades estão separadas em funções para garantir **organização**, **reutilização** e **clareza** no código:
 
 - `criar_usuario(nome, cpf, data_nascimento, endereco)`  
-  ➜ Cria um dicionário representando um novo usuário
+  ➜ Cria um dicionário representando um novo usuário.
 
 - `criar_conta(cpf, usuarios, numero_conta, agencia="001")`  
-  ➜ Gera uma nova conta vinculada ao CPF do usuário
+  ➜ Gera uma nova conta vinculada ao CPF do usuário.
 
 - `cadastro(usuarios)`  
-  ➜ Interface interativa para o cadastro do usuário com validações
+  ➜ Interface interativa para o cadastro do usuário com validações.
 
-- `deposito(saldo, valor, extrato)`  
-  ➜ Realiza um depósito e atualiza o histórico
+- `deposito(saldo, valor, extrato_lista)`  
+  ➜ Realiza um depósito e atualiza o histórico.
 
-- `saque(saldo, valor, extrato, numero_saques, limite_saque, limite_valor)`  
-  ➜ Executa um saque com controle de limites
+- `saque(saldo, valor, extrato_lista, numero_saques, limite_saque, limite_valor)`  
+  ➜ Executa um saque com controle de limites.
 
-- `extrato(extrato)`  
-  ➜ Exibe todas as transações realizadas
+- `extrato(extrato_lista)`  
+  ➜ Exibe todas as transações realizadas.
 
 - `menu_principal()`  
-  ➜ Gerencia o fluxo principal do sistema com opções interativas
+  ➜ Gerencia o fluxo principal do sistema com opções interativas.
 
 ---
 
 ## 📂 Dados Armazenados
 
-- **`usuarios`**: Dicionário onde a chave é o CPF, e o valor é um dicionário com os dados do usuário e suas contas
-- **`contador_contas`**: Controla a numeração sequencial de novas contas
-- **`extrato`**: Lista com strings representando cada operação realizada
-- **`saldo`, `numero_saques`, `limite_saque`, `limite_valor`**: Controle de saldo e limites da conta
+- **`usuarios`**: Dicionário onde a chave é o CPF, e o valor é um dicionário com os dados do usuário e suas contas.
+- **`contador_contas`**: Controla a numeração sequencial de novas contas.
+- **`extrato_lista`**: Lista com strings representando cada operação realizada.
+- **`saldo`, `numero_saques`, `limite_saque`, `limite_valor`**: Controle de saldo e limites da conta.
 
 ---
 
@@ -101,6 +101,7 @@ Nascimento : 01/01/1990
 Endereço   : Rua A, 123 - Centro
 Contas     : [{'agencia': '001', 'numero_conta': 1, 'cpf': '12345678900'}]
 ```
+
 ---
 
 ## 🧪 Em Desenvolvimento
@@ -128,7 +129,7 @@ Esta versão ainda está em construção. As próximas melhorias previstas inclu
 ## 📊 Estatísticas no GitHub
 
 ![Felipe's GitHub Stats](https://github-readme-stats.vercel.app/api?username=felpalbq&show_icons=true&theme=radical)  
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=felpalbq&layout=compact&theme=radical)
+![Top Langs](https://img.shields.io/badge/-Top%20Languages-000000?style=for-the-badge&logo=github&logoColor=white)
 
 ---
 
@@ -142,7 +143,5 @@ Esta versão ainda está em construção. As próximas melhorias previstas inclu
 
 ## 🏁 Status
 
-📚 **Em andamento** — Sistema bancário em fase de aprimoramento com novas funcionalidades em desenvolvimento  
-🔄 **Repositório em constante evolução** — Próximas etapas envolverão POO, banco de dados e APIs REST
-
----
+📚 **Em andamento** — Sistema bancário em fase de aprimoramento com novas funcionalidades em desenvolvimento.  
+🔄 **Repositório em constante evolução** — Próximas etapas envolverão POO, banco de dados e APIs REST.
