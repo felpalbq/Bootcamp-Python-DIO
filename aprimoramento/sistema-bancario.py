@@ -86,6 +86,22 @@ def cadastro(usuarios):
 
 #=========================== E T A P A === O P E R A Ç Õ E S =========================#
 
+### ATRIBUI SALDO INICIAL E LIMITES À CONTA ###
+def atribuir_conta (cpf, usuarios, saldo_inicial=1000, limite_valor=500, limite_saque=3):
+    if cpf not in usuarios or not usuarios[cpf]["contas"]:
+        print("❌ Nenhuma conta encontrada com esse CPF")
+        return None
+    conta = usuarios[cpf]["contas"][-1]
+    conta_atribuida = {
+        "cpf": cpf,
+        "numero_conta": conta["numero_conta"],
+        "agência": conta["agencia"],
+        "saldo": saldo_inicial,
+        "limite_valor": limite_valor,
+        "limite_saque": limite_saque,
+        "extrato": []
+    }
+    return conta_atribuida
 
 ### FUNÇÃO DEPÓSITO ###
 def deposito (saldo, valor, extrato):
@@ -145,12 +161,36 @@ def menu_principal():
             numero_conta = contador_contas
             conta = criar_conta(cpf, usuarios, numero_conta, agencia="001")
             contador_contas += 1
+            conta_atribuida = atribuir_conta(cpf, usuarios)
             print("\n✅ Nova conta criada com sucesso!")
             print(f"""
             Nome:    {usuario_atual['nome']}
             Conta:   {conta['numero_conta']}
             Agência: {conta['agencia']}
             """)
+            print(f"""
+            ✅ Novo usuário cadastrado com sucesso!
+
+            ======= Dados do Usuário ========
+            Nome       : {usuario_atual['nome']}
+            CPF        : {usuario_atual['cpf']}
+            Nascimento : {usuario_atual['data_nascimento']}
+            Endereço   : {usuario_atual['endereço']}
+            Contas     : {usuario_atual['contas']}
+            =================================
+
+            ======= Info Conta ==============
+            Saldo      : {conta_atribuida['saldo']}
+            =================================
+
+            ======= Menu de Opções ==========
+            [1] Saldo
+            [2] Depósito
+            [3] Saque
+            [4] Extrato
+            [5] Sair
+            """)
+            break
             # etc
         elif opcao == "3":
             print("Encerrando o sistema...")
@@ -158,15 +198,22 @@ def menu_principal():
         else:
             print("❌ Opção inválida, tente novamente.\n")
 
-        print(f"""
-✅ Novo usuário cadastrado com sucesso!
+        
+def operacoes(saldo, limite_valor=500, limite_saque=3):
+    opcao_escolhida = input("Digite o número correspondente à opção desejada: ").strip()
+    if opcao_escolhida == 1: 
+        valor = input("Informe o valor que deseja sacar: ").strip()
+        while True:
+            if valor >= saldo:            
+                operacao_saque = saque(saldo, valor, extrato)
+                print(f"""
+                      Saque de R$:{valor:.2f} efetuado com sucesso!
+                      Saldo restante: R$:{saldo:.2f}
+                      """)
 
---- Dados do usuário ---
-Nome       : {usuario_atual['nome']}
-CPF        : {usuario_atual['cpf']}
-Nascimento : {usuario_atual['data_nascimento']}
-Endereço   : {usuario_atual['endereço']}
-Contas     : {usuario_atual['contas']}
-""")
-
+                break
+            else:
+                print("Saldo insuficiente!")
+        return None
 menu_principal()
+operacoes(saldo)
