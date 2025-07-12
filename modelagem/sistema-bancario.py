@@ -122,4 +122,19 @@ class Cliente:
         print(f'Conta {numero} criada com sucesso para {self.nome}')
         return nova_conta
     
-    
+    def realizar_transacao(self):
+        print(f'\n{self.nome}, você tem as seguintes contas: ')
+        for i, conta_item in enumerate(self.contas, start=1):
+            print(f'{i} - Conta {conta_item.numero} (Saldo: R${conta_item.saldo:.2f})')
+
+        while True:
+            try: 
+                opcao_conta = int(input('Digite o número da conta desejada para realizar a transação: '))
+                if opcao_conta >= 1 and opcao_conta <= len(self.contas):
+                    conta_escolhida = self.contas[opcao_conta-1]
+                    break
+                else:
+                    print(f'Opção inválida! Por favor, escolha um número de 1 a {len(self.contas)}.')
+            except ValueError:
+                print('Entrada inválida! Digite apenas números.')
+        conta_escolhida.realizar_transacao()        
