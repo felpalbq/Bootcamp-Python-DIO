@@ -8,6 +8,15 @@ class Cliente:
         self.contas = []
 
     def realizar_transacao(self, conta, transacao):
+        hoje = datetime.now().date()
+        transacoes_hoje = [
+            t for t in conta.historico.transacoes
+            if t["data_hora"].date() == hoje
+        ]
+
+        if len(transacoes_hoje) >= 10:
+            print('\nLimite diário de 10 transações atingido.')
+            return
         transacao.registrar(conta)
 
     def adicionar_conta(self, conta):
@@ -124,7 +133,8 @@ class Historico:
         self._transacoes.append(
             {
                 "tipo":transacao.__class__.__name__,
-                "valor": transacao.valor
+                "valor": transacao.valor,
+                "data_hora": datetime.now()
 
             }
         )
@@ -253,7 +263,8 @@ def exibir_extrato(clientes):
         extrato = "Não foram realizadas movimentações."
     else:
         for transacao in transacoes:
-            extrato += f'\n{transacao['tipo']}\n\tR${transacao['valor']:.2f}'
+            data = transacao["data_hora"].strftime("%d/%m/%Y %H:%M:%S")
+            extrato += f'\n{data} - {transacao["tipo"]}\n\tR${transacao["valor"]:.2f}'
     print(extrato)
     print(f'\nSaldo:\n\tR${conta.saldo:.2f}')
     print('===============================')
