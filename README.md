@@ -63,22 +63,46 @@ O **curso** segue um cronograma bem estruturado, com módulos semanais que abord
 ## 📈 Estatísticas no GitHub
 
 ![Felipe's GitHub Stats](https://github-readme-stats.vercel.app/api?username=felpalbq&show_icons=true&theme=radical)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=felpalbq&layout=compact&theme=radical)
+![Top Langs](https://img.shields.io/badge/-Top%20Languages-9cf?style=flat&logo=python)
 
 ---
 
-## 🔗 Conecte-se Comigo
+## 🧾 Novidade - Funcionalidade de Auditoria de Logs
 
-[![GitHub](https://img.shields.io/badge/-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/felpalbq)
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/felpsszalbq)
-[![WhatsApp](https://img.shields.io/badge/-WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5573974009156)
+A partir desta versão do projeto, implementamos uma **função de auditoria de logs** para registrar todas as transações realizadas no sistema. Essa auditoria visa melhorar a **segurança** e a **rastreabilidade** das operações financeiras. Cada transação realizada é registrada em um arquivo de log (`log.txt`), o que permite:
+
+- **Rastreamento**: Permite a verificação de cada operação realizada pelos usuários.
+- **Segurança**: Facilita a análise de comportamento suspeito e garante a integridade das transações.
+- **Backup Contínuo**: As informações sobre as transações são armazenadas permanentemente, permitindo backup e recuperação de dados.
+
+### Como Funciona
+
+A auditoria de logs é realizada por meio de um **decorador de log**, que registra automaticamente:
+
+- Data e hora da execução da função.
+- Nome da função executada.
+- Argumentos passados para a função.
+- Valor retornado pela função.
+
+Essas informações são gravadas no arquivo `log.txt`, que será continuamente atualizado com novas transações. Se o arquivo já existir, as novas entradas serão **adicionadas ao final** do arquivo. Com isso, agora é possível revisar as transações de forma mais fácil e realizar análises detalhadas sobre as ações dos usuários no sistema.
 
 ---
 
-## 🏁 Status
+## 🔄 Próximas Etapas
 
-📚 **Em andamento** — Iniciando o curso **Bootcamp Santander 2025 - Back End Python**  
-🔄 **Repositório em constante evolução** — Novos desafios e projetos serão adicionados conforme o curso avança.
+| Etapa                               | Descrição                                                   |
+|------------------------------------|--------------------------------------------------------------|
+| ➕ `Transferencia` como transação   | Criar classe `Transferencia(Transacao)`                      |
+| 💳 Poupança com rendimento          | Implementar classe `ContaPoupanca` e transação `Rendimento`  |
+| 📁 Persistência de dados            | Salvar dados em JSON ou banco para manter histórico real     |
+| 🧪 Testes unitários                 | Escrever testes com `unittest` ou `pytest`                   |
+| 🌐 Interface com API                | Criar uma API REST com Flask ou FastAPI (etapas futuras)     |
 
 ---
+
+## 🏁 Status da Branch
+
+📦 **Modelagem Finalizada** — Sistema funcional com POO, interface de transações e histórico de auditoria.  
+🚧 **Expansão em Andamento** — Preparado para novos tipos de transação, persistência e refino de arquitetura.
+
 
