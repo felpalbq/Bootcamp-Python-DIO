@@ -1,0 +1,14 @@
+[2025-08-04 17:11:14] Função: filtrar_clientes, args: ('06088182598', []) kwargs: (), Retorno: None
+[2025-08-04 17:11:10] Função: criar_cliente, args: ([]) kwargs: (), Retorno: None
+[2025-08-04 17:11:32] Função: filtrar_clientes, args: ('06088182598', [<__main__.PessoaFisica object at 0x0000026243E45550>]) kwargs: (), Retorno: <__main__.PessoaFisica object at 0x0000026243E45550>
+[2025-08-04 17:11:28] Função: criar_conta, args: (1, [<__main__.PessoaFisica object at 0x0000026243E45550>], []) kwargs: (), Retorno: None
+[2025-08-04 17:11:43] Função: filtrar_clientes, args: ('06088182598', [<__main__.PessoaFisica object at 0x0000026243E45550>]) kwargs: (), Retorno: <__main__.PessoaFisica object at 0x0000026243E45550>
+[2025-08-04 17:11:46] Função: recuperar_conta_cliente, args: (<__main__.PessoaFisica object at 0x0000026243E45550>) kwargs: (), Retorno: <__main__.ContaCorrente object at 0x0000026243E46BA0>
+[2025-08-04 17:11:40] Função: depositar, args: ([<__main__.PessoaFisica object at 0x0000026243E45550>]) kwargs: (), Retorno: None
+[2025-08-04 17:11:55] Função: filtrar_clientes, args: ('06088182598', [<__main__.PessoaFisica object at 0x0000026243E45550>]) kwargs: (), Retorno: <__main__.PessoaFisica object at 0x0000026243E45550>
+[2025-08-04 17:11:57] Função: recuperar_conta_cliente, args: (<__main__.PessoaFisica object at 0x0000026243E45550>) kwargs: (), Retorno: <__main__.ContaCorrente object at 0x0000026243E46BA0>
+[2025-08-04 17:11:51] Função: sacar, args: ([<__main__.PessoaFisica object at 0x0000026243E45550>]) kwargs: (), Retorno: None
+[2025-08-04 17:12:05] Função: filtrar_clientes, args: ('06088182598', [<__main__.PessoaFisica object at 0x0000026243E45550>]) kwargs: (), Retorno: <__main__.PessoaFisica object at 0x0000026243E45550>
+[2025-08-04 17:12:05] Função: recuperar_conta_cliente, args: (<__main__.PessoaFisica object at 0x0000026243E45550>) kwargs: (), Retorno: <__main__.ContaCorrente object at 0x0000026243E46BA0>
+[2025-08-04 17:12:01] Função: exibir_extrato, args: ([<__main__.PessoaFisica object at 0x0000026243E45550>]) kwargs: (), Retorno: None
+[2025-08-04 17:12:16] Função: listar_contas, args: ([<__main__.ContaCorrente object at 0x0000026243E46BA0>]) kwargs: (), Retorno: None

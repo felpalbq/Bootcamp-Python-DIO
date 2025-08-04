@@ -1,5 +1,7 @@
 import textwrap
 from abc import ABC, abstractclassmethod, abstractproperty
+import functools
+import logging
 from datetime import datetime
 
 class Cliente:
@@ -177,6 +179,39 @@ class Deposito(Transacao):
         if sucesso_transacao:
             conta.historico.adicionar_transacao(self)
 
+# Configurar o logging para salvar em log.txt
+logging.basicConfig(
+    filename='log.txt',  # Nome do arquivo de log
+    level=logging.INFO,  # Define o nível de log (INFO, WARNING, ERROR, etc.)
+    format='%(message)s',  # Apenas a mensagem será registrada
+)
+
+def log_decorator(func):
+    """Decorador para registrar as chamadas de função em um arquivo de log."""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        # Data e hora atuais
+        data_hora = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        # Nome da função
+        nome_funcao = func.__name__
+
+        # Argumentos da função
+        args_str = ', '.join([repr(arg) for arg in args])
+        kwargs_str = ', '.join([f"{k}={v!r}" for k, v in kwargs.items()])
+        argumentos = f"args: ({args_str}) kwargs: ({kwargs_str})"
+
+        # Executar a função original e obter o valor retornado
+        resultado = func(*args, **kwargs)
+
+        # Log da execução da função
+        log_message = f"[{data_hora}] Função: {nome_funcao}, {argumentos}, Retorno: {resultado!r}"
+        logging.info(log_message)  # Salva o log no arquivo log.txt
+
+        return resultado  # Retorna o valor da função
+
+    return wrapper
+
 def menu():
     menu = """\n
     =========== MENU ===========
@@ -190,11 +225,13 @@ def menu():
     => """
     return input(textwrap.dedent(menu))
 
+@log_decorator
 def listar_contas(contas):
     for conta in contas:
         print("="*100)
         print(textwrap.dedent(str(conta)))
 
+@log_decorator
 def recuperar_conta_cliente(cliente):
     if not cliente.contas:
         print('\nCliente não possui conta.')
@@ -202,6 +239,7 @@ def recuperar_conta_cliente(cliente):
     # Não permite cliente escolher a conta
     return cliente.contas[0]
 
+@log_decorator
 def filtrar_clientes(cpf, clientes):
     clientes_filtrados = []
 
@@ -213,7 +251,8 @@ def filtrar_clientes(cpf, clientes):
         return clientes_filtrados[0]
     else:
         return None
-    
+
+@log_decorator
 def depositar(clientes):
     cpf = input('Informe o CPF do cliente: ')
     cliente = filtrar_clientes(cpf, clientes)
@@ -228,6 +267,7 @@ def depositar(clientes):
         return
     cliente.realizar_transacao(conta, transacao)
 
+@log_decorator
 def sacar(clientes):
     cpf = input('Informe o CPF do cliente: ')
     cliente = filtrar_clientes(cpf, clientes)
@@ -244,6 +284,7 @@ def sacar(clientes):
     
     cliente.realizar_transacao(conta, transacao)
 
+@log_decorator
 def exibir_extrato(clientes):
     cpf = input('Informe o CPF do cliente: ')
     cliente = filtrar_clientes(cpf, clientes)
@@ -269,6 +310,7 @@ def exibir_extrato(clientes):
     print(f'\nSaldo:\n\tR${conta.saldo:.2f}')
     print('===============================')
 
+@log_decorator
 def criar_conta(numero_conta, clientes, contas):
     cpf = input('Informe o CPF do cliente: ')
     cliente = filtrar_clientes(cpf, clientes)
@@ -283,6 +325,7 @@ def criar_conta(numero_conta, clientes, contas):
 
     print('\nConta criada com sucesso!')
 
+@log_decorator
 def criar_cliente(clientes):
     cpf = input('Informe o CPF do cliente: ')
     cliente = filtrar_clientes(cpf, clientes)
