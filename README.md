@@ -1,21 +1,21 @@
-# 🚀 Bootcamp Santander 2025 - Back End Python
+# 🚀 Bootcamp Santander 2025 - Back End Python (API e Manipulação de Dados)
 
-Bem-vindo ao repositório do **Bootcamp Santander 2025** de **Back End Python**! Este repositório armazena os **desafios** e **projetos** do curso, com o foco no desenvolvimento de sistemas utilizando **Python** e outras tecnologias essenciais.
+Bem-vindo ao repositório da **branch `db_fastapi`** do **Bootcamp Santander 2025** de **Back End Python**! Este repositório armazena os **desafios** e **projetos** relacionados à construção de **APIs** utilizando **FastAPI**, além da **manipulação de dados** com integração a **PostgreSQL** e **Docker**.
 
-O **primeiro desafio**, o **Sistema Bancário**, começa com uma solução simples e será **aprimorado e modelado** ao longo do curso, com foco em **POO**, **banco de dados** e **API**. Cada novo desafio será registrado em uma **branch** específica.
+O **primeiro desafio**, o **Workout API**, já foi desenvolvido e está registrado na pasta `workout_api`. Este desafio consiste na construção de uma **API com FastAPI**, para gerenciar dados de treino, utilizando **PostgreSQL** como banco de dados e **Docker** para containerização.
 
 ---
 
 ## 🔧 Tecnologias e Ferramentas Utilizadas
 
-O curso abrange diversas **tecnologias** e **ferramentas** para o desenvolvimento de **Back End**:
+O projeto aborda diversas **tecnologias** e **ferramentas** essenciais para o desenvolvimento de **APIs** e manipulação de dados:
 
 - **Python** 🐍
-- **MongoDB** 📦 (Banco de dados NoSQL)
-- **NoSQL** 💾
 - **FastAPI** ⚡ (Framework para criação de APIs rápidas)
-- **TDD** 🧪 (Test-Driven Development)
+- **PostgreSQL** 🗄️ (Banco de dados relacional)
 - **Docker** 🐳 (Containerização)
+- **SQLAlchemy** 🔗 (ORM para manipulação de dados no PostgreSQL)
+- **Pydantic** 📐 (Validação de dados e esquemas)
 
 ---
 
@@ -23,62 +23,55 @@ O curso abrange diversas **tecnologias** e **ferramentas** para o desenvolviment
 
 O repositório está organizado da seguinte forma:
 
-### 🔹 **`criação`**
-Branch onde foi criado o **Sistema Bancário** inicial, com funcionalidades de **saldo**, **depósito**, **saque** e **extrato**.
-
-### 🔹 **`aprimoramento`**
-Branch dedicada a **aprimorar o sistema bancário** com a adição de **funções** e melhor estruturação de código.
-
-### 🔹 **`modelagem`**
-Branch onde o sistema bancário será **modelado com POO (Programação Orientada a Objetos)** e poderá integrar novos conceitos como **banco de dados** e **API**.
+### 🔹 **`workout_api`**
+Pasta que contém a resolução do **primeiro desafio** do curso, a construção da **API Workout**. A API gerencia dados de treino, registrando exercícios, progresso e permitindo consultas aos dados dos usuários. O sistema foi desenvolvido utilizando **FastAPI** e **PostgreSQL**.
 
 ---
 
 ## 📊 Status do Repositório
 
 [![Python](https://img.shields.io/badge/Python-%3E%3D%203.7-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-%5E4.0-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-%5E13-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-003F6C?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![TDD](https://img.shields.io/badge/TDD-%23BFA91F?style=for-the-badge&logo=pytest)](https://en.wikipedia.org/wiki/Test-driven_development)
 
 ---
 
 ## 📝 Desafios e Projetos
 
-Os **desafios** e **projetos** serão divididos em **branches** para que você possa acompanhar a evolução do meu trabalho:
+Os **desafios** e **projetos** são divididos em **pasta(s)** específicas(s), para facilitar o acompanhamento do progresso:
 
-- **Branch `criação`**: Sistema bancário básico.
-- **Branch `aprimoramento`**: Adição de funções e aprimoramento do sistema.
-- **Branch `modelagem`**: Modelagem com POO e integração com banco de dados/API.
+- **Pasta `workout_api`**: Criação de uma API de gestão de treinos com **FastAPI** e **PostgreSQL**, contendo o código e estrutura do primeiro desafio do curso.
 
 ---
 
 ## 📅 Cronograma
 
-O **curso** segue um cronograma bem estruturado, com módulos semanais que abordam desde os conceitos básicos até práticas mais avançadas de **Back End**. Cada novo módulo será registrado neste repositório para que você possa acompanhar.
+O **curso** é estruturado em módulos semanais, com cada módulo trazendo novos desafios de **desenvolvimento de APIs** e **manipulação de dados**. À medida que o curso avança, novos desafios serão adicionados à branch `db_fastapi`, relacionados à construção e aprimoramento de **APIs** e **bancos de dados**.
 
 ---
 
 ## 📈 Estatísticas no GitHub
 
 ![Felipe's GitHub Stats](https://github-readme-stats.vercel.app/api?username=felpalbq&show_icons=true&theme=radical)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=felpalbq&layout=compact&theme=radical)
+![Top Langs](https://img.shields.io/badge/-Top%20Languages-9cf?style=flat&logo=python)
 
 ---
 
-## 🔗 Conecte-se Comigo
+## 🧾 Novidade - Exercício de Integração com PostgreSQL
 
-[![GitHub](https://img.shields.io/badge/-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/felpalbq)
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/felpsszalbq)
-[![WhatsApp](https://img.shields.io/badge/-WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5573974009156)
+Na pasta `workout_api`, o desafio inicial consistiu na criação de uma **API** para **gerenciar treinos** dos usuários, com integração ao **PostgreSQL** para persistência dos dados. O sistema é capaz de:
+
+- **Registrar treinos**.
+- **Consultar dados** de treino e progresso.
+- **Modificar e excluir** registros de treinos.
+
+### Como Funciona
+
+A integração com o banco de dados foi feita utilizando o **SQLAlchemy**, que facilita a manipulação das tabelas de **exercícios**, **usuários**, **treinos** e **logs de atividades**. Além disso, o projeto foi **containerizado com Docker**, garantindo um ambiente isolado e consistente para o desenvolvimento e execução da API.
 
 ---
 
-## 🏁 Status
+## 🏁 Status da Branch
 
-📚 **Em andamento** — Iniciando o curso **Bootcamp Santander 2025 - Back End Python**  
-🔄 **Repositório em constante evolução** — Novos desafios e projetos serão adicionados conforme o curso avança.
-
----
-
+📦 **Workout API Finalizada** — Sistema de gerenciamento de treinos completo com API FastAPI, integração com PostgreSQL e containerização com Docker.
